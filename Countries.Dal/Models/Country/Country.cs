@@ -6,7 +6,7 @@ namespace Countries.Dal.Models.Country
     /// <summary>
     /// Модель страны
     /// </summary>
-    public class Country : ICountry
+    public sealed class Country : ICountry
     {
         public string Name { get; set; }
         public string Capital { get; set; }

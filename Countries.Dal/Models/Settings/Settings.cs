@@ -5,7 +5,7 @@ namespace Countries.Dal.Models.Settings
     /// <summary>
     /// Модель настроек приложения
     /// </summary>
-    public class Settings : ISettings
+    public sealed class Settings : ISettings
     {
         public string Email { get; set; }
         public Languages Language { get; set; }

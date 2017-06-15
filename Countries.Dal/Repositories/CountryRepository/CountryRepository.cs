@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Countries.Dal.Models.Country;
 
@@ -7,7 +8,7 @@ namespace Countries.Dal.Repositories.CountryRepository
     /// <summary>
     /// Репозиторий стран
     /// </summary>
-    public class CountryRepository : ICountryRepository
+    public sealed class CountryRepository : ICountryRepository
     {
         /// <summary>
         /// Получить всю коллекцию стран
@@ -25,6 +26,9 @@ namespace Countries.Dal.Repositories.CountryRepository
         /// </returns>
         public IList<ICountry> GetCountryCollectionByCapital(string pattern)
         {
+            if (pattern == null)
+                throw new ArgumentException(nameof(pattern));
+
             IList<ICountry> countries = CountryCollection;
 
             IList<ICountry> result = countries.Where(country => country.Capital.ToLower().Contains(pattern.ToLower()))
@@ -44,6 +48,9 @@ namespace Countries.Dal.Repositories.CountryRepository
         /// </returns>
         public IList<ICountry> GetCountryCollectionByName(string pattern)
         {
+            if (pattern == null)
+                throw new ArgumentException(nameof(pattern));
+
             IList<ICountry> countries = CountryCollection;
 
             IList<ICountry> result = countries.Where(country => country.Name.ToLower().Contains(pattern.ToLower()))

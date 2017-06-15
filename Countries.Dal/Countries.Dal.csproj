@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DalContainer.cs" />
+    <Compile Include="DataManager\DataManager.cs" />
+    <Compile Include="DataManager\IDataManager.cs" />
     <Compile Include="Enums\Languages.cs" />
     <Compile Include="Models\Country\Country.cs" />
     <Compile Include="Models\Country\ICountry.cs" />

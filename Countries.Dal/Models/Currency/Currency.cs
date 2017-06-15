@@ -3,7 +3,7 @@
     /// <summary>
     /// Модель валюты
     /// </summary>
-    public class Currency : ICurrency
+    public sealed class Currency : ICurrency
     {
         public string Name { get; set; }
         public void Update(ICurrency currency)
