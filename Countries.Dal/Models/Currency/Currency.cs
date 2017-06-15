@@ -11,5 +11,10 @@ namespace Countries.Dal.Models.Currency
         {
             Name = currency.Name;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

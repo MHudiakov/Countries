@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Countries.Dal;
+using Countries.Dal.DataManager;
+using Countries.Dal.Models.Country;
 using Countries.Managers.CountriesManager;
+using Countries.Managers.Factories.CountriesManagerFactory;
+using Countries.ViewModels;
 
 namespace Countries
 {
@@ -24,11 +30,17 @@ namespace Countries
         public MainWindow()
         {
             InitializeComponent();
+            InitializeApp();
+            DataContext = new CountriesCollectionViewModel();
+        }
 
-            ICountriesManagerStrategy countriesManagerStrategy = new WebApiCountriesManager();
-            countriesManagerStrategy.GetCountries();
-
-
+        private void InitializeApp()
+        {
+            IDataManager dataManager = new DataManager();
+            DalContainer.RegisterDataManger(dataManager);
+            AbstractCountriesManagerFactory countriesManagerFactory = new CountriesManagerFactory();
+            var countriesManager = countriesManagerFactory.CreateCountriesManager();
+            DalContainer.GetDataManager.CountryRepository.CountryCollection = (IList<ICountry>)countriesManager.GetCountries();
         }
     }
 }

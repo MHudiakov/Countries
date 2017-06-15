@@ -4,9 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Countries"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Города и страны" Height="350" Width="525">
     <Grid>
-        
+        <DataGrid x:Name="PhonesGrid" AutoGenerateColumns="True" ItemsSource="{Binding CountryCollection}" SelectedItem="{Binding SelectedCountry}">
+            
+        </DataGrid>
     </Grid>
 </Window>
