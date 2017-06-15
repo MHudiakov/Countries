@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9DE6C0A6-DA2D-4E9D-A795-F7B40D5AA87C}</ProjectGuid>
+    <ProjectGuid>{80817381-148C-4F90-8A13-041520B7DD15}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Countries.Dal</RootNamespace>
-    <AssemblyName>Countries.Dal</AssemblyName>
+    <RootNamespace>Countries.Managers</RootNamespace>
+    <AssemblyName>Countries.Managers</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\Countries\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,23 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DalContainer.cs" />
-    <Compile Include="DataManager\DataManager.cs" />
-    <Compile Include="DataManager\IDataManager.cs" />
-    <Compile Include="Enums\Languages.cs" />
-    <Compile Include="Models\Country\Country.cs" />
-    <Compile Include="Models\Country\ICountry.cs" />
-    <Compile Include="Models\Currency\Currency.cs" />
-    <Compile Include="Models\Currency\ICurrency.cs" />
-    <Compile Include="Models\Mail\IMail.cs" />
-    <Compile Include="Models\Mail\Mail.cs" />
-    <Compile Include="Models\Settings\ISettings.cs" />
-    <Compile Include="Models\Settings\Settings.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="MailSender\IMailSenderStrategy.cs" />
+    <Compile Include="MailSender\NetMailSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\CountryRepository\CountryRepository.cs" />
-    <Compile Include="Repositories\CountryRepository\ICountryRepository.cs" />
-    <Compile Include="Repositories\SettingsRepository\ISettingsRepository.cs" />
-    <Compile Include="Repositories\SettingsRepository\SettingsRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Countries.Dal\Countries.Dal.csproj">
+      <Project>{9DE6C0A6-DA2D-4E9D-A795-F7B40D5AA87C}</Project>
+      <Name>Countries.Dal</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
