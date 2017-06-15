@@ -95,6 +95,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Countries.Dal\Countries.Dal.csproj">
+      <Project>{9de6c0a6-da2d-4e9d-a795-f7b40d5aa87c}</Project>
+      <Name>Countries.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Countries.Managers\Countries.Managers.csproj">
+      <Project>{80817381-148c-4f90-8a13-041520b7dd15}</Project>
+      <Name>Countries.Managers</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

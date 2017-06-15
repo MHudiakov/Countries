@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Countries.Managers.CountriesManager;
 
 namespace Countries
 {
@@ -23,6 +24,11 @@ namespace Countries
         public MainWindow()
         {
             InitializeComponent();
+
+            ICountriesManagerStrategy countriesManagerStrategy = new WebApiCountriesManager();
+            countriesManagerStrategy.GetCountries();
+
+
         }
     }
 }
