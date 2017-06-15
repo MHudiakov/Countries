@@ -44,9 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="CountriesManager\ICountriesManagerStrategy.cs" />
     <Compile Include="CountriesManager\WebApiCountriesManager.cs" />
+    <Compile Include="Factories\CountriesManagerFactory\AbstractCountriesManagerFactory.cs" />
+    <Compile Include="Factories\CountriesManagerFactory\CountriesManagerFactory.cs" />
+    <Compile Include="Factories\MailSenderFactory\AbstractMailSenderFactory.cs" />
+    <Compile Include="Factories\MailSenderFactory\MailSenderFactory.cs" />
     <Compile Include="MailSender\IMailSenderStrategy.cs" />
     <Compile Include="MailSender\NetMailSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

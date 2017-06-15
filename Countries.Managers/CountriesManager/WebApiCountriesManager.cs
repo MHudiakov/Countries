@@ -52,7 +52,6 @@ namespace Countries.Managers.CountriesManager
             }
 
             return countryCollection;
-
         }
 
         /// <summary>
