@@ -13,10 +13,13 @@ namespace Countries.ViewModels
             _country = country;
         }
 
+        [DisplayName("Name")]
         public string Name => _country.Name;
 
+        [DisplayName("Capital")]
         public string Capital => _country.Capital;
 
+        [DisplayName("Currencies")]
         public string Currencies => string.Join(",", _country.CurrencyCollection);
 
         public event PropertyChangedEventHandler PropertyChanged;

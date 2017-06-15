@@ -6,10 +6,29 @@
         xmlns:local="clr-namespace:Countries"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Города и страны" Height="350" Width="525">
+        Title="Города и страны" Height="300" Width="525">
     <Grid>
-        <DataGrid x:Name="PhonesGrid" AutoGenerateColumns="True" ItemsSource="{Binding CountryCollection}" SelectedItem="{Binding SelectedCountry}">
-            
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DataGrid x:Name="PhonesGrid" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" AutoGenerateColumns="True" 
+                  ItemsSource="{Binding CountryCollection}" SelectedItem="{Binding SelectedCountry}"
+                  RowBackground="LightGray" AlternatingRowBackground="White">
         </DataGrid>
+
+        <WrapPanel Grid.Column="0" Grid.Row="1" >
+            <ToggleButton  Content="Помощь" Width="100" Height="25" Margin="10,10,-10,-10" Checked="ToggleButton_Checked" />
+            <ToggleButton  Content="Технологии" Width="100" Height="25" Margin="20,10,-10,-10" />
+            <ToggleButton  Content="Настройки" Width="100" Height="25" Margin="20,10,-10,-10" />
+        </WrapPanel>
+
+        <Popup Grid.Row="0" x:Name="Popup1" StaysOpen="False" Placement="Center" MaxWidth="180"
+               AllowsTransparency="False" >
+            <TextBlock TextWrapping="Wrap" Width="180" Background="White"   >
+                Чтобы узнать больше, посетите сайт metanit.com
+            </TextBlock>
+        </Popup>
     </Grid>
 </Window>
