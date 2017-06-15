@@ -10,8 +10,17 @@ namespace Countries.Managers.MailSender
     /// </summary>
     public class NetMailSender : IMailSenderStrategy
     {
+        /// <summary>
+        /// Отправить письмо получателю
+        /// </summary>
+        /// <param name="mailModel">
+        /// Модель письма
+        /// </param>
         public void Send(IMail mailModel)
         {
+            if (mailModel == null)
+                throw new ArgumentException(nameof(mailModel));
+
             try
             {
                 using (var mail = new MailMessage())

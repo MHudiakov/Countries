@@ -1,4 +1,5 @@
-﻿namespace Countries.Dal.Models.Currency
+﻿
+namespace Countries.Dal.Models.Currency
 {
     /// <summary>
     /// Модель валюты

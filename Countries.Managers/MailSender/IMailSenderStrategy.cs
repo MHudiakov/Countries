@@ -7,6 +7,12 @@ namespace Countries.Managers.MailSender
     /// </summary>
     public interface IMailSenderStrategy
     {
+        /// <summary>
+        /// Отправить письмо получателю
+        /// </summary>
+        /// <param name="mailModel">
+        /// Модель письма
+        /// </param>
         void Send(IMail mailModel);
     }
 }

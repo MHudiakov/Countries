@@ -9,7 +9,9 @@ namespace Countries.Dal.Models.Country
     public sealed class Country : ICountry
     {
         public string Name { get; set; }
+        
         public string Capital { get; set; }
+        
         public IEnumerable<ICurrency> CurrencyCollection { get; set; }
         public void Update(ICountry country)
         {
