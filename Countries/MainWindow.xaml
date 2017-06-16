@@ -6,22 +6,32 @@
         xmlns:local="clr-namespace:Countries"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Города и страны" Height="300" Width="525">
+        Title="Города и страны" MinHeight="400" MinWidth="500" Height="500" Width="700">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="45"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="45"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <DataGrid x:Name="PhonesGrid" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" AutoGenerateColumns="True" 
-                  ItemsSource="{Binding CountryCollection}" SelectedItem="{Binding SelectedCountry}"
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" >
+            <TextBlock Height="20" Margin="10,0,0,0"> Страна: </TextBlock>
+            <TextBox Text="{Binding CountryFilterPattern}"  MaxLength="250" Height="25"  Width="158" Margin="10,0,0,0"  />
+            <TextBlock Height="20" Margin="10,0,0,0"> Столица:</TextBlock>
+            <TextBox Text="{Binding CapitalFilterPattern}" MaxLength="250" Height="25"  Width="158" Margin="10,0,0,0"  />
+            <Button Name="BtFilter" Content="Отфильтровать" Width="100" Height="25" Margin="10,0,0,0" Command="{Binding FilterCommand}" />
+        </StackPanel>
+                   
+        
+        <DataGrid x:Name="PhonesGrid" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" AutoGenerateColumns="True" 
+                  ItemsSource="{Binding AllCountries}" SelectedItem="{Binding SelectedCountry}"
                   RowBackground="LightGray" AlternatingRowBackground="White">
         </DataGrid>
 
-        <WrapPanel Grid.Column="0" Grid.Row="1" >
-            <ToggleButton  Content="Помощь" Width="100" Height="25" Margin="10,10,-10,-10" Checked="ToggleButton_Checked" />
-            <ToggleButton  Content="Технологии" Width="100" Height="25" Margin="20,10,-10,-10" />
-            <ToggleButton  Content="Настройки" Width="100" Height="25" Margin="20,10,-10,-10" />
+        <WrapPanel Grid.Column="0" Grid.Row="2" >
+            <ToggleButton Name="BtHellp"  Content="Помощь" Width="100" Height="25" Margin="10,10,-10,-10" Checked="ToggleButton_Checked" />
+            <ToggleButton Name="BtTechnology"  Content="Технологии" Width="100" Height="25" Margin="20,10,-10,-10" />
+            <Button Name="BtSettings" Content="Настройки" Width="100" Height="25" Margin="20,10,-10,-10" />
         </WrapPanel>
 
         <Popup Grid.Row="0" x:Name="Popup1" StaysOpen="False" Placement="Center" MaxWidth="180"
