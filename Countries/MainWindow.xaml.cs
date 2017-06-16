@@ -13,10 +13,5 @@ namespace Countries
             InitializeComponent();
             DataContext = new CountriesCollectionViewModel();
         }
-
-        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
-        {
-            Popup1.IsOpen = true;
-        }
     }
 }

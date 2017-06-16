@@ -8,6 +8,32 @@
         mc:Ignorable="d"
         Title="Города и страны" MinHeight="400" MinWidth="500" Height="500" Width="700">
     <Grid>
+        <Grid.Resources>
+            <Style x:Key="ToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Border HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" x:Name="border" Padding="5,2,5,2"  Background="AliceBlue" BorderBrush="#FF000000" BorderThickness="1,1,1,1" SnapsToDevicePixels="True">
+                                <ContentPresenter x:Name="contentPresenter"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter Property="Background" TargetName="border" Value="#FFBFACAC"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Background" TargetName="border" Value="Azure"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="true">
+                                    <Setter Property="Background" TargetName="border" Value="AntiqueWhite"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+
+
         <Grid.RowDefinitions>
             <RowDefinition Height="45"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -29,15 +55,26 @@
         </DataGrid>
 
         <WrapPanel Grid.Column="0" Grid.Row="2" >
-            <ToggleButton Name="BtHellp"  Content="Помощь" Width="100" Height="25" Margin="10,10,-10,-10" Checked="ToggleButton_Checked" />
-            <ToggleButton Name="BtTechnology"  Content="Технологии" Width="100" Height="25" Margin="20,10,-10,-10" />
+            <ToggleButton Name="BtHellp" Style="{StaticResource ToggleButtonStyle}" Width="100" Height="25" Margin="10,10,-10,-10"  >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Resources/play-button.png" Height="20" Width="20" />
+                    <TextBlock>Помощь</TextBlock>
+                </StackPanel>
+            </ToggleButton>
+
+            <ToggleButton Name="BtTechnology" Style="{StaticResource ToggleButtonStyle}" Width="100" Height="25" Margin="20,10,-10,-10" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Resources/play-button.png" Height="20" Width="20"/>
+                    <TextBlock>Технологии</TextBlock>
+                </StackPanel>
+            </ToggleButton>
             <Button Name="BtSettings" Content="Настройки" Width="100" Height="25" Margin="20,10,-10,-10" />
         </WrapPanel>
 
         <Popup Grid.Row="0" x:Name="Popup1" StaysOpen="False" Placement="Center" MaxWidth="180"
                AllowsTransparency="False" >
             <TextBlock TextWrapping="Wrap" Width="180" Background="White"   >
-                Чтобы узнать больше, посетите сайт metanit.com
+                Предварительная инфа
             </TextBlock>
         </Popup>
     </Grid>
