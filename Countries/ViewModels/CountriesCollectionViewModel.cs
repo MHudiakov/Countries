@@ -9,9 +9,8 @@ using Countries.Dal;
 
 namespace Countries.ViewModels
 {
+    using System.Resources;
     using System.Windows;
-
-    using Countries.Dal.Models.Country;
 
     /// <summary>
     /// Модель отображения списка стран
@@ -168,6 +167,8 @@ namespace Countries.ViewModels
                 return _showHelpCommand ??
                        (_showHelpCommand = new BaseCommand(obj =>
                            {
+                               //ResourceManager resourceManager = new ResourceManager("Resources", typeof(App).Assembly);
+                               //PopupText = resourceManager.GetString("HelpInfo");
                                PopupText = "ShowHelpCommand";
                                IsPopupOpen = !IsPopupOpen;
                            }

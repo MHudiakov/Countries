@@ -11,6 +11,8 @@
     <v:String x:Key="Country">Country</v:String>
     <v:String x:Key="Capital">Capital</v:String>
     <v:String x:Key="Filter">Filter</v:String>
+    <v:String x:Key="HelpInfo">HelpInfo</v:String>
+    <v:String x:Key="TechnologiesInfo">TechnologiesInfo</v:String>
 
     <!-- Settings window -->
     <v:String x:Key="SettingsWindowName">Settings</v:String>

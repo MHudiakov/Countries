@@ -11,6 +11,8 @@
     <v:String x:Key="Country">Страна</v:String>
     <v:String x:Key="Capital">Столица</v:String>
     <v:String x:Key="Filter">Отфильтровать</v:String>
+    <v:String x:Key="HelpInfo">Как пользоваться программой</v:String>
+    <v:String x:Key="TechnologiesInfo">Используемые технологии</v:String>
 
     <!-- Settings window -->
     <v:String x:Key="SettingsWindowName">Настройки</v:String>
