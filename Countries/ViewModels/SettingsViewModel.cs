@@ -11,7 +11,6 @@ namespace Countries.ViewModels
 
     using Countries.Commands;
     using Countries.Dal;
-    using Countries.Dal.Models.Country;
     using Countries.Dal.Models.Mail;
     using Countries.Managers.Factories.MailSenderFactory;
     using Countries.Managers.MailSender;
@@ -23,6 +22,8 @@ namespace Countries.ViewModels
         public SettingsViewModel(string message)
         {
             this._message = message;
+            ISettings settings = DalContainer.GetDataManager.SettingsRepository.Settings;
+            Email = settings.Email;
         }
 
         #region Email
@@ -72,11 +73,21 @@ namespace Countries.ViewModels
                                     this.SendMail();
 
                                     // Меняем язык
-                                    CultureInfo lang = new CultureInfo("ru-RU");
-                                    if (lang != null)
+                                    CultureInfo lang;
+                                    switch (Language)
                                     {
-                                        App.Language = lang;
+                                        case Languages.Eng:
+                                            lang = new CultureInfo("en-EN");
+                                            break;
+                                        case Languages.Rus:
+                                            lang = new CultureInfo("ru-RU");
+                                            break;
+                                        default:
+                                            lang = new CultureInfo("en-EN");
+                                            break;
                                     }
+
+                                    App.Language = lang;
                                 }
                         ));
             }
@@ -84,6 +95,11 @@ namespace Countries.ViewModels
 
         private void SendMail()
         {
+            if (string.IsNullOrEmpty(Email))
+            {
+                return;
+            }
+
             try
             {
                 IMail mail = new Mail();
@@ -98,8 +114,11 @@ namespace Countries.ViewModels
                 IMailSenderStrategy mailSenderStrategy = mailSenderFactory.CreateMailSender();
                 mailSenderStrategy.Send(mail);
                 MessageBox.Show("Ваше письмо было успешно отправлено");
+
+                ISettings settings = DalContainer.GetDataManager.SettingsRepository.Settings;
+                settings.Email = Email;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MessageBox.Show("Не удалось отправить письмо");
             }

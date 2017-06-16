@@ -4,10 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         WindowStartupLocation="CenterScreen"
-        xmlns:local="clr-namespace:Countries"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:enums="clr-namespace:Countries.Dal.Enums;assembly=Countries.Dal"
         mc:Ignorable="d"
         
         Title="{DynamicResource SettingsWindowName}" MinWidth="280" MaxWidth="280" MinHeight="155" MaxHeight="155" Height="155" Width="280" >
+    <Window.Resources>
+        <ObjectDataProvider x:Key="DataFromEnum" MethodName="GetValues"
+                            ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:Languages"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -17,10 +26,8 @@
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Margin="0, 10, 0, 0">
             <TextBlock Height="20" Margin="10,0,0,0" Text="{DynamicResource Language}"/>
-            <ComboBox  Height="30" Margin="10,0,0,0" VerticalAlignment="Top" Width="145">
-                <TextBlock>English</TextBlock>
-                <TextBlock>Русский</TextBlock>
-            </ComboBox>
+            <ComboBox  Height="30" Margin="10,0,0,0" VerticalAlignment="Top" Width="145" ItemsSource="{Binding Source={StaticResource DataFromEnum}}"
+                       SelectedItem="{Binding Path=Language}"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1" Margin="0, 10, 0, 0">
