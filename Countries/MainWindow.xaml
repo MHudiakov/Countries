@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Countries"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Города и страны" MinHeight="400" MinWidth="500" Height="500" Width="700">
+        Title="{DynamicResource AppName}" MinHeight="400" MinWidth="500" Height="500" Width="700">
     <Grid>
         <Grid.Resources>
             <Style x:Key="ToggleButtonStyle" TargetType="{x:Type ToggleButton}">
@@ -32,8 +32,7 @@
                 </Setter>
             </Style>
         </Grid.Resources>
-
-
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="45"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -41,11 +40,11 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" >
-            <TextBlock Height="20" Margin="10,0,0,0"> Страна: </TextBlock>
+            <TextBlock Height="20" Margin="10,0,0,0" Text="{DynamicResource Country}"/>
             <TextBox Text="{Binding CountryFilterPattern}"  MaxLength="250" Height="25"  Width="158" Margin="10,0,0,0"  />
-            <TextBlock Height="20" Margin="10,0,0,0"> Столица:</TextBlock>
+            <TextBlock Height="20" Margin="10,0,0,0" Text="{DynamicResource Capital}" />
             <TextBox Text="{Binding CapitalFilterPattern}" MaxLength="250" Height="25"  Width="158" Margin="10,0,0,0"  />
-            <Button Name="BtFilter" Content="Отфильтровать" Width="100" Height="25" Margin="10,0,0,0" Command="{Binding FilterCommand}" />
+            <Button Name="BtFilter" Content="{DynamicResource Filter}" Width="100" Height="25" Margin="10,0,0,0" Command="{Binding FilterCommand}" />
         </StackPanel>
                    
         
@@ -58,17 +57,17 @@
             <ToggleButton Name="BtHellp" Style="{StaticResource ToggleButtonStyle}" Width="100" Height="25" Margin="10,10,-10,-10" Command="{Binding ShowHelpCommand}" >
                 <StackPanel Orientation="Horizontal">
                     <Image Name="Image" Source="Resources/play-button.png" Height="20" Width="20" />
-                    <TextBlock>Помощь</TextBlock>
+                    <TextBlock Text="{DynamicResource Help}"/>
                 </StackPanel>
             </ToggleButton>
 
             <ToggleButton Name="BtTechnology" Style="{StaticResource ToggleButtonStyle}" Width="100" Height="25" Margin="20,10,-10,-10" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="Resources/play-button.png" Height="20" Width="20"/>
-                    <TextBlock>Технологии</TextBlock>
+                    <TextBlock Text="{DynamicResource Technologies}" />
                 </StackPanel>
             </ToggleButton>
-            <Button Name="BtSettings" Content="Настройки" Width="100" Height="25" Margin="20,10,-10,-10" />
+            <Button Name="BtSettings" Content="{DynamicResource Settings}" Width="100" Height="25" Margin="20,10,-10,-10" />
         </WrapPanel>
 
         <Popup Grid.Row="0" StaysOpen="True" IsOpen="{Binding IsPopupOpen}" Placement="Center" Width="200" Height="200"
