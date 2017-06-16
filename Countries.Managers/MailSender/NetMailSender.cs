@@ -27,7 +27,7 @@ namespace Countries.Managers.MailSender
                 {
                     mail.From = new MailAddress(mailModel.From);
                     mail.To.Add(new MailAddress(mailModel.To));
-                    mail.Subject = mailModel.Captioin;
+                    mail.Subject = mailModel.Caption;
                     mail.Body = mailModel.Message;
 
                     SmtpClient client = new SmtpClient();

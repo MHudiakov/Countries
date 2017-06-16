@@ -5,8 +5,16 @@ using Countries.Dal.Models.Settings;
 
 namespace Countries.ViewModels
 {
+    using System;
+    using System.Globalization;
+    using System.Windows;
+
+    using Countries.Commands;
     using Countries.Dal;
     using Countries.Dal.Models.Country;
+    using Countries.Dal.Models.Mail;
+    using Countries.Managers.Factories.MailSenderFactory;
+    using Countries.Managers.MailSender;
 
     internal class SettingsViewModel : INotifyPropertyChanged
     {
@@ -44,6 +52,56 @@ namespace Countries.ViewModels
             {
                 this._languages = value;
                 OnPropertyChanged("Language");
+            }
+        }
+
+        #endregion
+
+        #region ApplySettingsCommand
+
+        private BaseCommand _applySettingsCommand;
+
+        public BaseCommand ApplySettingsCommand
+        {
+            get
+            {
+                return _applySettingsCommand ??
+                       (_applySettingsCommand = new BaseCommand(obj =>
+                                {
+                                    // Отправляем письмо
+                                    this.SendMail();
+
+                                    // Меняем язык
+                                    CultureInfo lang = new CultureInfo("ru-RU");
+                                    if (lang != null)
+                                    {
+                                        App.Language = lang;
+                                    }
+                                }
+                        ));
+            }
+        }
+
+        private void SendMail()
+        {
+            try
+            {
+                IMail mail = new Mail();
+                mail.SmtpServer = Properties.Settings.Default.SmtpServer;
+                mail.From = Properties.Settings.Default.MailAddress;
+                mail.Password = Properties.Settings.Default.Password;
+                mail.Port = Properties.Settings.Default.Port;
+                mail.To = Email;
+                mail.Caption = "Информация по стране";
+                mail.Message = this._message;
+                AbstractMailSenderFactory mailSenderFactory = new MailSenderFactory();
+                IMailSenderStrategy mailSenderStrategy = mailSenderFactory.CreateMailSender();
+                mailSenderStrategy.Send(mail);
+                MessageBox.Show("Ваше письмо было успешно отправлено");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Не удалось отправить письмо");
             }
         }
 

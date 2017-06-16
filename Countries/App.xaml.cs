@@ -86,7 +86,7 @@ namespace Countries
                 }
 
                 //4. Вызываем евент для оповещения всех окон.
-                LanguageChanged(Application.Current, new EventArgs());
+            //    LanguageChanged(Application.Current, new EventArgs());
             }
         }
     }
