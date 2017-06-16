@@ -9,6 +9,10 @@ using Countries.Dal;
 
 namespace Countries.ViewModels
 {
+    using System.Windows;
+
+    using Countries.Dal.Models.Country;
+
     /// <summary>
     /// Модель отображения списка стран
     /// </summary>
@@ -168,6 +172,38 @@ namespace Countries.ViewModels
                                IsPopupOpen = !IsPopupOpen;
                            }
                         ));
+            }
+        }
+
+        #endregion
+
+        #region OpenSettingsCommand
+
+        private BaseCommand _openSettingsCommand;
+
+        public BaseCommand OpenSettingsCommand
+        {
+            get
+            {
+                return _openSettingsCommand ??
+                    (_openSettingsCommand = new BaseCommand(
+                         obj =>
+                             {
+                                 if (SelectedCountry == null)
+                                 {
+                                     MessageBox.Show("Please, select country", "Info");
+                                     return;
+                                 }
+
+                                 SettingsWindow settingsWindow = new SettingsWindow();
+
+                                 string eMessage = $"Информация по стране. Название: {this.SelectedCountry.Name}, столица: {this.SelectedCountry.Capital}, "
+                                                   + $"основные валюты: {SelectedCountry.Currencies}";
+
+                                 SettingsViewModel settingsViewModel = new SettingsViewModel(eMessage);
+                                 settingsWindow.DataContext = settingsViewModel;
+                                 settingsWindow.ShowDialog();
+                             }));
             }
         }
 

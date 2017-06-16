@@ -2,6 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:v="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:Countries.Resources">
+
+    <!-- Main window -->
     <v:String x:Key="Help">Help</v:String>
     <v:String x:Key="Technologies">Technologies</v:String>
     <v:String x:Key="Settings">Settings</v:String>
@@ -9,4 +11,9 @@
     <v:String x:Key="Country">Country</v:String>
     <v:String x:Key="Capital">Capital</v:String>
     <v:String x:Key="Filter">Filter</v:String>
+
+    <!-- Settings window -->
+    <v:String x:Key="SettingsWindowName">Settings</v:String>
+    <v:String x:Key="Apply">Apply</v:String>
+    <v:String x:Key="Language">Choice language:</v:String>
 </ResourceDictionary>

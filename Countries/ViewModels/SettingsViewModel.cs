@@ -5,34 +5,49 @@ using Countries.Dal.Models.Settings;
 
 namespace Countries.ViewModels
 {
+    using Countries.Dal;
+    using Countries.Dal.Models.Country;
+
     internal class SettingsViewModel : INotifyPropertyChanged
     {
-        private readonly ISettings _settings;
+        private readonly string _message;
 
-        public SettingsViewModel(ISettings settings)
+        public SettingsViewModel(string message)
         {
-            _settings = settings;
+            this._message = message;
         }
+
+        #region Email
+
+        private string _email;
 
         public string Email
         {
-            get { return _settings.Email; }
+            get { return _email; }
             set
             {
-                _settings.Email = value;
+                _email = value;
                 OnPropertyChanged("Email");
             }
         }
 
+        #endregion
+
+        #region Language
+
+        private Languages _languages;
+
         public Languages Language
         {
-            get { return _settings.Language; }
+            get { return this._languages; }
             set
             {
-                _settings.Language = value;
+                this._languages = value;
                 OnPropertyChanged("Language");
             }
         }
+
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
 
