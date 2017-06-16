@@ -9,11 +9,13 @@ using Countries.Dal;
 
 namespace Countries.ViewModels
 {
+    /// <summary>
+    /// Модель отображения списка стран
+    /// </summary>
     internal class CountriesCollectionViewModel : INotifyPropertyChanged
     {
         public CountriesCollectionViewModel()
         {
-
             IEnumerable<CountryViewModel> countries = DalContainer.GetDataManager.CountryRepository.CountryCollection.Select(country => new CountryViewModel(country));
             CountryCollection = new ObservableCollection<CountryViewModel>(countries);
 
@@ -94,6 +96,8 @@ namespace Countries.ViewModels
 
         #endregion
 
+        #region IsPopupOpen
+
         private bool _isPopupOpen;
 
         public bool IsPopupOpen
@@ -105,6 +109,8 @@ namespace Countries.ViewModels
                 OnPropertyChanged("IsPopupOpen");
             }
         }
+
+        #endregion
 
         #region Filter
 
@@ -158,10 +164,29 @@ namespace Countries.ViewModels
                 return _showHelpCommand ??
                        (_showHelpCommand = new BaseCommand(obj =>
                            {
-                               PopupText = "adfs dasf asdf dasf ";
+                               PopupText = "ShowHelpCommand";
                                IsPopupOpen = !IsPopupOpen;
                            }
                         ));
+            }
+        }
+
+        #endregion
+
+        #region ShowTechnologiesCommand
+
+        private BaseCommand _showTechnologiesCommand;
+
+        public BaseCommand ShowTechnologiesCommand
+        {
+            get
+            {
+                return _showTechnologiesCommand ??
+                    (_showTechnologiesCommand = new BaseCommand(obj =>
+                    {
+                        PopupText = "ShowTechnologiesCommand";
+                        IsPopupOpen = !IsPopupOpen;
+                    }));
             }
         }
 

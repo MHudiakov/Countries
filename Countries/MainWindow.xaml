@@ -46,8 +46,7 @@
             <TextBox Text="{Binding CapitalFilterPattern}" MaxLength="250" Height="25"  Width="158" Margin="10,0,0,0"  />
             <Button Name="BtFilter" Content="{DynamicResource Filter}" Width="100" Height="25" Margin="10,0,0,0" Command="{Binding FilterCommand}" />
         </StackPanel>
-                   
-        
+
         <DataGrid x:Name="PhonesGrid" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" AutoGenerateColumns="True" 
                   ItemsSource="{Binding AllCountries}" SelectedItem="{Binding SelectedCountry}"
                   RowBackground="LightGray" AlternatingRowBackground="White">
@@ -61,7 +60,7 @@
                 </StackPanel>
             </ToggleButton>
 
-            <ToggleButton Name="BtTechnology" Style="{StaticResource ToggleButtonStyle}" Width="100" Height="25" Margin="20,10,-10,-10" >
+            <ToggleButton Name="BtTechnology" Style="{StaticResource ToggleButtonStyle}" Width="100" Height="25" Margin="20,10,-10,-10" Command="{Binding ShowTechnologiesCommand}" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="Resources/play-button.png" Height="20" Width="20"/>
                     <TextBlock Text="{DynamicResource Technologies}" />
