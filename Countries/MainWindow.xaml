@@ -55,9 +55,9 @@
         </DataGrid>
 
         <WrapPanel Grid.Column="0" Grid.Row="2" >
-            <ToggleButton Name="BtHellp" Style="{StaticResource ToggleButtonStyle}" Width="100" Height="25" Margin="10,10,-10,-10"  >
+            <ToggleButton Name="BtHellp" Style="{StaticResource ToggleButtonStyle}" Width="100" Height="25" Margin="10,10,-10,-10" Command="{Binding ShowHelpCommand}" >
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="Resources/play-button.png" Height="20" Width="20" />
+                    <Image Name="Image" Source="Resources/play-button.png" Height="20" Width="20" />
                     <TextBlock>Помощь</TextBlock>
                 </StackPanel>
             </ToggleButton>
@@ -71,10 +71,10 @@
             <Button Name="BtSettings" Content="Настройки" Width="100" Height="25" Margin="20,10,-10,-10" />
         </WrapPanel>
 
-        <Popup Grid.Row="0" x:Name="Popup1" StaysOpen="False" Placement="Center" MaxWidth="180"
+        <Popup Grid.Row="0" StaysOpen="True" IsOpen="{Binding IsPopupOpen}" Placement="Center" Width="200" Height="200"
                AllowsTransparency="False" >
-            <TextBlock TextWrapping="Wrap" Width="180" Background="White"   >
-                Предварительная инфа
+            <TextBlock Text="{Binding PopupText}" Padding="10, 10, 10, 10" 
+                       TextWrapping="Wrap"  Background="Azure">
             </TextBlock>
         </Popup>
     </Grid>

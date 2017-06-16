@@ -20,6 +20,8 @@ namespace Countries.ViewModels
             CvsCountries = new CollectionViewSource();
             CvsCountries.Source = this.CountryCollection;
             CvsCountries.Filter += ApplyFilter;
+
+            _isPopupOpen = false;
         }
 
         public ObservableCollection<CountryViewModel> CountryCollection { get; set; }
@@ -76,6 +78,34 @@ namespace Countries.ViewModels
 
         #endregion
 
+        #region PopupText
+
+        private string _popupText;
+
+        public string PopupText
+        {
+            get { return _popupText; }
+            set
+            {
+                _popupText = value;
+                OnPropertyChanged("PopupText");
+            }
+        }
+
+        #endregion
+
+        private bool _isPopupOpen;
+
+        public bool IsPopupOpen
+        {
+            get { return _isPopupOpen; }
+            set
+            {
+                _isPopupOpen = value;
+                OnPropertyChanged("IsPopupOpen");
+            }
+        }
+
         #region Filter
 
         private void OnFilterChanged()
@@ -112,6 +142,26 @@ namespace Countries.ViewModels
                        {
                            OnFilterChanged();
                        }));
+            }
+        }
+
+        #endregion
+
+        #region ShowHelpCommand
+
+        private BaseCommand _showHelpCommand;
+
+        public BaseCommand ShowHelpCommand
+        {
+            get
+            {
+                return _showHelpCommand ??
+                       (_showHelpCommand = new BaseCommand(obj =>
+                           {
+                               PopupText = "adfs dasf asdf dasf ";
+                               IsPopupOpen = !IsPopupOpen;
+                           }
+                        ));
             }
         }
 
