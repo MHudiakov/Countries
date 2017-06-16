@@ -13,7 +13,7 @@
 
         string To { get; set; }
 
-        string Captioin { get; set; }
+        string Caption { get; set; }
 
         string Message { get; set; }
 

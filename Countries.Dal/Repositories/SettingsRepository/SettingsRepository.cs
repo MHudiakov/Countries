@@ -7,6 +7,11 @@ namespace Countries.Dal.Repositories.SettingsRepository
     /// </summary>
     public sealed class SettingsRepository : ISettingsRepository
     {
+        public SettingsRepository()
+        {
+            Settings = new Settings();
+        }
+
         /// <summary>
         /// Настройки приложения
         /// </summary>
