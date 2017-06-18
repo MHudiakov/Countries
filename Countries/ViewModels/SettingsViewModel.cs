@@ -23,7 +23,19 @@ namespace Countries.ViewModels
         {
             this._message = message;
             ISettings settings = DalContainer.GetDataManager.SettingsRepository.Settings;
+            this.ApplySettingsCommand = new BaseCommand(ApplySettings);
             Email = settings.Email;
+
+
+            switch (App.Language.Name)
+            {
+                case "ru-RU":
+                    Language = Languages.Rus;
+                    break;
+                case "en-US":
+                    Language = Languages.Eng;
+                    break;
+            }
         }
 
         #region Email
@@ -60,37 +72,32 @@ namespace Countries.ViewModels
 
         #region ApplySettingsCommand
 
-        private BaseCommand _applySettingsCommand;
+        public BaseCommand ApplySettingsCommand { get; }
 
-        public BaseCommand ApplySettingsCommand
+        private void ApplySettings(object window)
         {
-            get
+            // Отправляем письмо
+            this.SendMail();
+
+            // Меняем язык
+            CultureInfo lang;
+            switch (Language)
             {
-                return _applySettingsCommand ??
-                       (_applySettingsCommand = new BaseCommand(obj =>
-                                {
-                                    // Отправляем письмо
-                                    this.SendMail();
-
-                                    // Меняем язык
-                                    CultureInfo lang;
-                                    switch (Language)
-                                    {
-                                        case Languages.Eng:
-                                            lang = new CultureInfo("en-EN");
-                                            break;
-                                        case Languages.Rus:
-                                            lang = new CultureInfo("ru-RU");
-                                            break;
-                                        default:
-                                            lang = new CultureInfo("en-EN");
-                                            break;
-                                    }
-
-                                    App.Language = lang;
-                                }
-                        ));
+                case Languages.Eng:
+                    lang = new CultureInfo("en-US");
+                    break;
+                case Languages.Rus:
+                    lang = new CultureInfo("ru-RU");
+                    break;
+                default:
+                    lang = new CultureInfo("en-US");
+                    break;
             }
+
+            App.Language = lang;
+
+            // Закрываем окно
+            ((Window)window)?.Close();
         }
 
         private void SendMail()

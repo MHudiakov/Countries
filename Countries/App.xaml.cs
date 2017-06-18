@@ -30,6 +30,7 @@ namespace Countries
         {
             InitializeApp();
             base.OnStartup(e);
+            Language = new CultureInfo("en-US");
         }
 
         private void InitializeApp()

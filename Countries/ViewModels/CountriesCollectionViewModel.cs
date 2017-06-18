@@ -26,7 +26,7 @@ namespace Countries.ViewModels
             CvsCountries.Source = this.CountryCollection;
             CvsCountries.Filter += ApplyFilter;
 
-            _isPopupOpen = false;
+            this._isHelpPopupOpen = false;
         }
 
         public ObservableCollection<CountryViewModel> CountryCollection { get; set; }
@@ -83,33 +83,65 @@ namespace Countries.ViewModels
 
         #endregion
 
-        #region PopupText
+        #region HelpPopupText
 
-        private string _popupText;
+        private string _helpPopupText;
 
-        public string PopupText
+        public string HelpPopupText
         {
-            get { return _popupText; }
+            get { return this._helpPopupText; }
             set
             {
-                _popupText = value;
-                OnPropertyChanged("PopupText");
+                this._helpPopupText = value;
+                OnPropertyChanged("HelpPopupText");
             }
         }
 
         #endregion
 
-        #region IsPopupOpen
+        #region TechnologiesPopupText
 
-        private bool _isPopupOpen;
+        private string _technologiesPopupText;
 
-        public bool IsPopupOpen
+        public string TechnologiesPopupText
         {
-            get { return _isPopupOpen; }
+            get { return this._technologiesPopupText; }
             set
             {
-                _isPopupOpen = value;
-                OnPropertyChanged("IsPopupOpen");
+                this._technologiesPopupText = value;
+                OnPropertyChanged("TechnologiesPopupText");
+            }
+        }
+
+        #endregion
+
+        #region IsHelpPopupOpen
+
+        private bool _isHelpPopupOpen;
+
+        public bool IsHelpPopupOpen
+        {
+            get { return this._isHelpPopupOpen; }
+            set
+            {
+                this._isHelpPopupOpen = value;
+                OnPropertyChanged("IsHelpPopupOpen");
+            }
+        }
+
+        #endregion
+
+        #region IsTechnologiesPopupOpen
+
+        private bool _isTechnologiesPopupOpen;
+
+        public bool IsTechnologiesPopupOpen
+        {
+            get { return this._isTechnologiesPopupOpen; }
+            set
+            {
+                this._isTechnologiesPopupOpen = value;
+                OnPropertyChanged("IsTechnologiesPopupOpen");
             }
         }
 
@@ -169,8 +201,8 @@ namespace Countries.ViewModels
                            {
                                //ResourceManager resourceManager = new ResourceManager("Resources", typeof(App).Assembly);
                                //PopupText = resourceManager.GetString("HelpInfo");
-                               PopupText = "ShowHelpCommand";
-                               IsPopupOpen = !IsPopupOpen;
+                               this.HelpPopupText = "ShowHelpCommand";
+                               this.IsHelpPopupOpen = !this.IsHelpPopupOpen;
                            }
                         ));
             }
@@ -221,8 +253,8 @@ namespace Countries.ViewModels
                 return _showTechnologiesCommand ??
                     (_showTechnologiesCommand = new BaseCommand(obj =>
                     {
-                        PopupText = "ShowTechnologiesCommand";
-                        IsPopupOpen = !IsPopupOpen;
+                        this.TechnologiesPopupText = "ShowTechnologiesCommand";
+                        this.IsTechnologiesPopupOpen = !this.IsTechnologiesPopupOpen;
                     }));
             }
         }
