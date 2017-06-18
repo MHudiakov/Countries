@@ -9,7 +9,6 @@ using Countries.Dal;
 
 namespace Countries.ViewModels
 {
-    using System.Resources;
     using System.Windows;
 
     /// <summary>
@@ -29,7 +28,7 @@ namespace Countries.ViewModels
             this._isHelpPopupOpen = false;
         }
 
-        private MainWindow _mainWindow = (MainWindow)Application.Current.MainWindow;
+        private readonly MainWindow _mainWindow = (MainWindow)Application.Current.MainWindow;
 
         public ObservableCollection<CountryViewModel> CountryCollection { get; set; }
 
