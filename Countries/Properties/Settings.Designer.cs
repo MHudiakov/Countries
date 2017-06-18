@@ -43,7 +43,7 @@ namespace Countries.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("maxydream@mail.ru")]
+        [global::System.Configuration.DefaultSettingValueAttribute("countriestest@mail.ru")]
         public string MailAddress {
             get {
                 return ((string)(this["MailAddress"]));
@@ -55,7 +55,7 @@ namespace Countries.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("password")]
+        [global::System.Configuration.DefaultSettingValueAttribute("password123")]
         public string Password {
             get {
                 return ((string)(this["Password"]));
