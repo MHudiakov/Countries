@@ -9,10 +9,10 @@
       <Value Profile="(Default)">587</Value>
     </Setting>
     <Setting Name="MailAddress" Type="System.String" Scope="User">
-      <Value Profile="(Default)">maxydream@mail.ru</Value>
+      <Value Profile="(Default)">countriestest@mail.ru</Value>
     </Setting>
     <Setting Name="Password" Type="System.String" Scope="User">
-      <Value Profile="(Default)">password</Value>
+      <Value Profile="(Default)">password123</Value>
     </Setting>
   </Settings>
 </SettingsFile>
