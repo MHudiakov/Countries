@@ -29,6 +29,8 @@ namespace Countries.ViewModels
             this._isHelpPopupOpen = false;
         }
 
+        private Window _mainWindow = (MainWindow)Application.Current.MainWindow;
+
         public ObservableCollection<CountryViewModel> CountryCollection { get; set; }
 
         internal CollectionViewSource CvsCountries { get; set; }
@@ -199,9 +201,8 @@ namespace Countries.ViewModels
                 return _showHelpCommand ??
                        (_showHelpCommand = new BaseCommand(obj =>
                            {
-                               //ResourceManager resourceManager = new ResourceManager("Resources", typeof(App).Assembly);
-                               //PopupText = resourceManager.GetString("HelpInfo");
-                               this.HelpPopupText = "ShowHelpCommand";
+                               string help = (string)this._mainWindow.FindResource("HelpInfo");
+                               this.HelpPopupText = help;
                                this.IsHelpPopupOpen = !this.IsHelpPopupOpen;
                            }
                         ));
@@ -252,10 +253,11 @@ namespace Countries.ViewModels
             {
                 return _showTechnologiesCommand ??
                     (_showTechnologiesCommand = new BaseCommand(obj =>
-                    {
-                        this.TechnologiesPopupText = "ShowTechnologiesCommand";
-                        this.IsTechnologiesPopupOpen = !this.IsTechnologiesPopupOpen;
-                    }));
+                        {
+                            string technologiesInfo = (string)this._mainWindow.FindResource("TechnologiesInfo");
+                            this.TechnologiesPopupText = technologiesInfo;
+                            this.IsTechnologiesPopupOpen = !this.IsTechnologiesPopupOpen;
+                        }));
             }
         }
 

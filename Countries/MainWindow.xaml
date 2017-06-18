@@ -4,8 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         WindowStartupLocation="CenterScreen"
-        xmlns:local="clr-namespace:Countries"
-        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
         Title="{DynamicResource AppName}" MinHeight="400" MinWidth="650" Height="500" Width="700">
     <Grid>
@@ -78,7 +76,7 @@
         </Popup>
 
         <Popup Grid.Row="0" StaysOpen="True" IsOpen="{Binding IsTechnologiesPopupOpen}" Placement="Center" Width="200" Height="200"
-               AllowsTransparency="False" >
+               AllowsTransparency="False">
             <TextBlock Text="{Binding TechnologiesPopupText}" Padding="10, 10, 10, 10" 
                        TextWrapping="Wrap"  Background="Azure">
             </TextBlock>

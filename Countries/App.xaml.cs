@@ -15,15 +15,15 @@ namespace Countries
     /// </summary>
     public partial class App : Application
     {
-        private static readonly List<CultureInfo> s_Languages = new List<CultureInfo>();
+        private static readonly List<CultureInfo> s_languages = new List<CultureInfo>();
 
-        public static List<CultureInfo> Languages => s_Languages;
+        public static List<CultureInfo> Languages => s_languages;
 
         public App()
         {
-            s_Languages.Clear();
-            s_Languages.Add(new CultureInfo("en-US")); //Нейтральная культура для этого проекта
-            s_Languages.Add(new CultureInfo("ru-RU"));
+            s_languages.Clear();
+            s_languages.Add(new CultureInfo("en-US")); //Нейтральная культура для этого проекта
+            s_languages.Add(new CultureInfo("ru-RU"));
         }
 
         protected override void OnStartup(StartupEventArgs e)
@@ -42,9 +42,6 @@ namespace Countries
             DalContainer.GetDataManager.CountryRepository.CountryCollection = (IList<ICountry>)countriesManager.GetCountries();
         }
 
-        //Евент для оповещения всех окон приложения
-        public static event EventHandler LanguageChanged;
-
         public static CultureInfo Language
         {
             get
@@ -53,8 +50,11 @@ namespace Countries
             }
             set
             {
-                if (value == null) throw new ArgumentNullException("value");
-                if (value == System.Threading.Thread.CurrentThread.CurrentUICulture) return;
+                if (value == null)
+                    throw new ArgumentNullException(nameof(value));
+
+                if (Equals(value, System.Threading.Thread.CurrentThread.CurrentUICulture))
+                    return;
 
                 //1. Меняем язык приложения:
                 System.Threading.Thread.CurrentThread.CurrentUICulture = value;
@@ -64,7 +64,7 @@ namespace Countries
                 switch (value.Name)
                 {
                     case "ru-RU":
-                        dict.Source = new Uri(String.Format("Resources/lang.{0}.xaml", value.Name), UriKind.Relative);
+                        dict.Source = new Uri($"Resources/lang.{value.Name}.xaml", UriKind.Relative);
                         break;
                     default:
                         dict.Source = new Uri("Resources/lang.xaml", UriKind.Relative);
@@ -72,22 +72,19 @@ namespace Countries
                 }
 
                 //3. Находим старую ResourceDictionary и удаляем его и добавляем новую ResourceDictionary
-                ResourceDictionary oldDict = (from d in Application.Current.Resources.MergedDictionaries
+                ResourceDictionary oldDict = (from d in Current.Resources.MergedDictionaries
                     where d.Source != null && d.Source.OriginalString.StartsWith("Resources/lang.")
                     select d).First();
                 if (oldDict != null)
                 {
-                    int ind = Application.Current.Resources.MergedDictionaries.IndexOf(oldDict);
-                    Application.Current.Resources.MergedDictionaries.Remove(oldDict);
-                    Application.Current.Resources.MergedDictionaries.Insert(ind, dict);
+                    int ind = Current.Resources.MergedDictionaries.IndexOf(oldDict);
+                    Current.Resources.MergedDictionaries.Remove(oldDict);
+                    Current.Resources.MergedDictionaries.Insert(ind, dict);
                 }
                 else
                 {
-                    Application.Current.Resources.MergedDictionaries.Add(dict);
+                    Current.Resources.MergedDictionaries.Add(dict);
                 }
-
-                //4. Вызываем евент для оповещения всех окон.
-            //    LanguageChanged(Application.Current, new EventArgs());
             }
         }
     }
