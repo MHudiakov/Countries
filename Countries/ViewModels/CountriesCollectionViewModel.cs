@@ -29,7 +29,7 @@ namespace Countries.ViewModels
             this._isHelpPopupOpen = false;
         }
 
-        private Window _mainWindow = (MainWindow)Application.Current.MainWindow;
+        private MainWindow _mainWindow = (MainWindow)Application.Current.MainWindow;
 
         public ObservableCollection<CountryViewModel> CountryCollection { get; set; }
 
@@ -223,6 +223,12 @@ namespace Countries.ViewModels
                     (_openSettingsCommand = new BaseCommand(
                          obj =>
                              {
+                                 // Закрываем popup-ы, переводим кнопки в обычный режим
+                                 this._mainWindow.TechnologiesPopup.IsOpen = false;
+                                 this._mainWindow.HelpPopup.IsOpen = false;
+                                 this._mainWindow.BtHellp.IsChecked = false;
+                                 this._mainWindow.BtTechnology.IsChecked = false;
+
                                  if (SelectedCountry == null)
                                  {
                                      MessageBox.Show("Please, select country", "Info");

@@ -68,14 +68,14 @@
             <Button Name="BtSettings" Content="{DynamicResource Settings}" Width="100" Height="25" Margin="20,10,-10,-10" Command="{Binding OpenSettingsCommand}" />
         </WrapPanel>
 
-        <Popup Grid.Row="0" StaysOpen="True" IsOpen="{Binding IsHelpPopupOpen}" Placement="Center" Width="200" Height="200"
+        <Popup Name="HelpPopup" Grid.Row="0" StaysOpen="True" IsOpen="{Binding IsHelpPopupOpen}" Placement="Center" Width="200" Height="200"
                AllowsTransparency="False" >
             <TextBlock Text="{Binding HelpPopupText}" Padding="10, 10, 10, 10" 
                        TextWrapping="Wrap"  Background="Azure">
             </TextBlock>
         </Popup>
 
-        <Popup Grid.Row="0" StaysOpen="True" IsOpen="{Binding IsTechnologiesPopupOpen}" Placement="Center" Width="200" Height="200"
+        <Popup Name="TechnologiesPopup" Grid.Row="0" StaysOpen="True" IsOpen="{Binding IsTechnologiesPopupOpen}" Placement="Center" Width="200" Height="200"
                AllowsTransparency="False">
             <TextBlock Text="{Binding TechnologiesPopupText}" Padding="10, 10, 10, 10" 
                        TextWrapping="Wrap"  Background="Azure">
