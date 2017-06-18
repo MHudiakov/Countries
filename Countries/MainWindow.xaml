@@ -4,8 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         WindowStartupLocation="CenterScreen"
-        xmlns:local="clr-namespace:Countries"
-        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
         Title="{DynamicResource AppName}" MinHeight="400" MinWidth="650" Height="500" Width="700">
     <Grid>
@@ -70,11 +68,19 @@
             <Button Name="BtSettings" Content="{DynamicResource Settings}" Width="100" Height="25" Margin="20,10,-10,-10" Command="{Binding OpenSettingsCommand}" />
         </WrapPanel>
 
-        <Popup Grid.Row="0" StaysOpen="True" IsOpen="{Binding IsPopupOpen}" Placement="Center" Width="200" Height="200"
+        <Popup Name="HelpPopup" Grid.Row="0" StaysOpen="True" IsOpen="{Binding IsHelpPopupOpen}" Placement="Center" Width="200" Height="200"
                AllowsTransparency="False" >
-            <TextBlock Text="{Binding PopupText}" Padding="10, 10, 10, 10" 
+            <TextBlock Text="{Binding HelpPopupText}" Padding="10, 10, 10, 10" 
                        TextWrapping="Wrap"  Background="Azure">
             </TextBlock>
         </Popup>
+
+        <Popup Name="TechnologiesPopup" Grid.Row="0" StaysOpen="True" IsOpen="{Binding IsTechnologiesPopupOpen}" Placement="Center" Width="200" Height="200"
+               AllowsTransparency="False">
+            <TextBlock Text="{Binding TechnologiesPopupText}" Padding="10, 10, 10, 10" 
+                       TextWrapping="Wrap"  Background="Azure">
+            </TextBlock>
+        </Popup>
+        
     </Grid>
 </Window>

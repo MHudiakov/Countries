@@ -1,18 +1,17 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:v="clr-namespace:System;assembly=mscorlib"
-                    xmlns:local="clr-namespace:Countries.Resources">
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
     
     <!-- Main window -->
     <v:String x:Key="Help">Помощь</v:String>
     <v:String x:Key="Technologies">Технологии</v:String>
-    <v:String x:Key="Settings">Настройки</v:String>
+    <v:String x:Key="Settings">Настройки...</v:String>
     <v:String x:Key="AppName">Страны</v:String>
     <v:String x:Key="Country">Страна</v:String>
     <v:String x:Key="Capital">Столица</v:String>
     <v:String x:Key="Filter">Отфильтровать</v:String>
-    <v:String x:Key="HelpInfo">Как пользоваться программой</v:String>
-    <v:String x:Key="TechnologiesInfo">Используемые технологии</v:String>
+    <v:String x:Key="HelpInfo">Для поиска нужной страны отфильтруйте весь список стран по части имени страны, либо её столицы. Для того, чтобы отправить инормацию по выбранной стране на e-mail, нажмите кнопку "Настройки". В появившемся окне вы также можете поменять язык приложения</v:String>
+    <v:String x:Key="TechnologiesInfo">Используемые технологии: Json.Net - для парсинга списка стран, Net.Mail - для отправки почты, WPF с использованием MVVM паттерна для реализации интерфейса пользователя</v:String>
 
     <!-- Settings window -->
     <v:String x:Key="SettingsWindowName">Настройки</v:String>
