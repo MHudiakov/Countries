@@ -3,12 +3,12 @@
 namespace Countries.Dal.Repositories.SettingsRepository
 {
     /// <summary>
-    /// Интерфейс репозитория настроек
+    /// Settings repository interface
     /// </summary>
     public interface ISettingsRepository
     {
         /// <summary>
-        /// Настройки приложения
+        /// App settings
         /// </summary>
         ISettings Settings { get; set; }
     }

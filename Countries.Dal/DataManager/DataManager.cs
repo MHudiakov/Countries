@@ -5,22 +5,22 @@ using Countries.Dal.Repositories.SettingsRepository;
 namespace Countries.Dal.DataManager
 {
     /// <summary>
-    /// Менеджер доступа к данным
+    /// The data access manager
     /// </summary>
     public class DataManager : IDataManager
     {
         public DataManager()
         {
             /////////////////////////////////////
-            // Создаем и регистрируем репозитории
+            // Create and register repositories
             /////////////////////////////////////
 
-            // Репозиторий стран
+            // Country repository
             _countryRepository =
                 new Lazy<ICountryRepository>(() => new CountryRepository(), 
                     true);
 
-            // Репозиторий настроек
+            // Settings repository
             _settingsRepository = 
                 new Lazy<ISettingsRepository>(() => new SettingsRepository(),
                 true);
@@ -29,12 +29,12 @@ namespace Countries.Dal.DataManager
         #region CountryRepository
 
         /// <summary>
-        /// Кэшированная ссылка на репозиторий стран
+        /// Cached reference to the country repository
         /// </summary>
         private readonly Lazy<ICountryRepository> _countryRepository;
 
         /// <summary>
-        /// Репозиторий стран
+        /// Country repository
         /// </summary>
         public ICountryRepository CountryRepository => _countryRepository.Value;
 
@@ -43,12 +43,12 @@ namespace Countries.Dal.DataManager
         #region SettingsRepository
 
         /// <summary>
-        /// Кэшированная ссылка на репозиторий настроек
+        /// Cached reference to the settings repository
         /// </summary>
         private readonly Lazy<ISettingsRepository> _settingsRepository;
 
         /// <summary>
-        /// Репозиторий настроек
+        /// Settings repository
         /// </summary>
         public ISettingsRepository SettingsRepository => _settingsRepository.Value;
 

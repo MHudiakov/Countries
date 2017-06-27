@@ -3,7 +3,7 @@
 namespace Countries.Dal.Models.Settings
 {
     /// <summary>
-    /// Модель настроек приложения
+    /// App settings model
     /// </summary>
     public sealed class Settings : ISettings
     {

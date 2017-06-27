@@ -22,7 +22,7 @@ namespace Countries
         public App()
         {
             s_languages.Clear();
-            s_languages.Add(new CultureInfo("en-US")); //Нейтральная культура для этого проекта
+            s_languages.Add(new CultureInfo("en-US"));
             s_languages.Add(new CultureInfo("ru-RU"));
         }
 
@@ -56,10 +56,10 @@ namespace Countries
                 if (Equals(value, System.Threading.Thread.CurrentThread.CurrentUICulture))
                     return;
 
-                //1. Меняем язык приложения:
+                // 1. Change app language:
                 System.Threading.Thread.CurrentThread.CurrentUICulture = value;
 
-                //2. Создаём ResourceDictionary для новой культуры
+                // 2. Create ResourceDictionary for out culture
                 ResourceDictionary dict = new ResourceDictionary();
                 switch (value.Name)
                 {
@@ -71,7 +71,7 @@ namespace Countries
                         break;
                 }
 
-                //3. Находим старую ResourceDictionary и удаляем его и добавляем новую ResourceDictionary
+                //3. Find the old  ResourceDictionary, delete it and add new ResourceDictionary
                 ResourceDictionary oldDict = (from d in Current.Resources.MergedDictionaries
                     where d.Source != null && d.Source.OriginalString.StartsWith("Resources/lang.")
                     select d).First();

@@ -3,7 +3,7 @@
 namespace Countries.Managers.Factories.CountriesManagerFactory
 {
     /// <summary>
-    /// Абстрактная фабрика по созданию менеджера получения списка стран
+    /// Abstract factory for creating countries manager 
     /// </summary>
     public abstract class AbstractCountriesManagerFactory
     {

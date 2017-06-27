@@ -76,10 +76,10 @@ namespace Countries.ViewModels
 
         private void ApplySettings(object window)
         {
-            // Отправляем письмо
+            // Send mail
             this.SendMail();
 
-            // Меняем язык
+            // Change language
             CultureInfo lang;
             switch (Language)
             {
@@ -96,7 +96,7 @@ namespace Countries.ViewModels
 
             App.Language = lang;
 
-            // Закрываем окно
+            // Close window
             ((Window)window)?.Close();
         }
 
@@ -115,19 +115,19 @@ namespace Countries.ViewModels
                 mail.Password = Properties.Settings.Default.Password;
                 mail.Port = Properties.Settings.Default.Port;
                 mail.To = Email;
-                mail.Caption = "Информация по стране";
+                mail.Caption = "Country info";
                 mail.Message = this._message;
                 AbstractMailSenderFactory mailSenderFactory = new MailSenderFactory();
                 IMailSenderStrategy mailSenderStrategy = mailSenderFactory.CreateMailSender();
                 mailSenderStrategy.Send(mail);
-                MessageBox.Show("Ваше письмо было успешно отправлено");
+                MessageBox.Show("Your email was successfully sent");
 
                 ISettings settings = DalContainer.GetDataManager.SettingsRepository.Settings;
                 settings.Email = Email;
             }
             catch (Exception)
             {
-                MessageBox.Show("Не удалось отправить письмо");
+                MessageBox.Show("Failed to send email");
             }
         }
 

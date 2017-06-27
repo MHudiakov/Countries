@@ -2,7 +2,7 @@
 namespace Countries.Dal.Models.Currency
 {
     /// <summary>
-    /// Модель валюты
+    /// Currency model
     /// </summary>
     public sealed class Currency : ICurrency
     {

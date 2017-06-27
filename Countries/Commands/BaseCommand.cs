@@ -4,7 +4,7 @@ using System.Windows.Input;
 namespace Countries.Commands
 {
     /// <summary>
-    /// Базовая комманда для реализации MVVM паттерна
+    /// Base command for MVVM pattern
     /// </summary>
     public class BaseCommand : ICommand
     {

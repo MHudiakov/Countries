@@ -3,7 +3,7 @@
 namespace Countries.Dal.Repositories.SettingsRepository
 {
     /// <summary>
-    /// Репозиторий настроек
+    /// Settings repository
     /// </summary>
     public sealed class SettingsRepository : ISettingsRepository
     {
@@ -13,7 +13,7 @@ namespace Countries.Dal.Repositories.SettingsRepository
         }
 
         /// <summary>
-        /// Настройки приложения
+        /// App settings
         /// </summary>
         public ISettings Settings { get; set; }
     }

@@ -12,7 +12,7 @@ namespace Countries.ViewModels
     using System.Windows;
 
     /// <summary>
-    /// Модель отображения списка стран
+    /// Countries list viewModel
     /// </summary>
     internal class CountriesCollectionViewModel : INotifyPropertyChanged
     {
@@ -222,7 +222,8 @@ namespace Countries.ViewModels
                     (_openSettingsCommand = new BaseCommand(
                          obj =>
                              {
-                                 // Закрываем popup-ы, переводим кнопки в обычный режим
+                                 // Close popups and switch buttons in default mode
+                                 // Закрываем popup-ы, 
                                  this._mainWindow.TechnologiesPopup.IsOpen = false;
                                  this._mainWindow.HelpPopup.IsOpen = false;
                                  this._mainWindow.BtHellp.IsChecked = false;
@@ -236,8 +237,8 @@ namespace Countries.ViewModels
 
                                  SettingsWindow settingsWindow = new SettingsWindow();
 
-                                 string eMessage = $"Информация по стране. Название: {this.SelectedCountry.Name}, столица: {this.SelectedCountry.Capital}, "
-                                                   + $"основные валюты: {SelectedCountry.Currencies}";
+                                 string eMessage = $"Country info. Name: {this.SelectedCountry.Name}, capital: {this.SelectedCountry.Capital}, "
+                                                   + $"major currencies: {SelectedCountry.Currencies}";
 
                                  SettingsViewModel settingsViewModel = new SettingsViewModel(eMessage);
                                  settingsWindow.DataContext = settingsViewModel;

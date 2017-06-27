@@ -4,17 +4,17 @@ using Countries.Dal.Repositories.SettingsRepository;
 namespace Countries.Dal.DataManager
 {
     /// <summary>
-    /// Интерфейс менеджера данных
+    /// The data access Manager interface
     /// </summary>
     public interface IDataManager
     {
         /// <summary>
-        /// Репозиторий стран
+        /// Country repository
         /// </summary>
         ICountryRepository CountryRepository { get; }
 
         /// <summary>
-        /// Репозиторий настроек
+        /// Settings repository
         /// </summary>
         ISettingsRepository SettingsRepository { get; }
     }

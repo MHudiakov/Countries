@@ -1,17 +1,17 @@
 ﻿namespace Countries.Dal.Enums
 {
     /// <summary>
-    /// Языки системы
+    /// Languages
     /// </summary>
     public enum Languages
     {
         /// <summary>
-        /// Английский
+        /// English
         /// </summary>
         Eng,
 
         /// <summary>
-        /// Русский
+        /// Russian
         /// </summary>
         Rus
     }

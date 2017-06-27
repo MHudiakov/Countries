@@ -1,7 +1,7 @@
 ﻿namespace Countries.Dal.Models.Currency
 {
     /// <summary>
-    /// Интерфейс модели валюты
+    /// Currency model interface
     /// </summary>
     public interface ICurrency
     {

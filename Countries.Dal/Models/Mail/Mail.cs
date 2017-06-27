@@ -1,7 +1,7 @@
 ﻿namespace Countries.Dal.Models.Mail
 {
     /// <summary>
-    /// Модель e-mail сообщения
+    /// Mail model
     /// </summary>
     public sealed class Mail : IMail
     {

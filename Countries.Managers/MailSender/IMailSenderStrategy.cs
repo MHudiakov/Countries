@@ -3,15 +3,15 @@
 namespace Countries.Managers.MailSender
 {
     /// <summary>
-    /// Стратегия отправки e-mail
+    /// E-mail sending strategy
     /// </summary>
     public interface IMailSenderStrategy
     {
         /// <summary>
-        /// Отправить письмо получателю
+        /// Send e-mail
         /// </summary>
         /// <param name="mailModel">
-        /// Модель письма
+        /// E-mail model
         /// </param>
         void Send(IMail mailModel);
     }

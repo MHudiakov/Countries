@@ -4,7 +4,7 @@ using Countries.Dal.Models.Currency;
 namespace Countries.Dal.Models.Country
 {
     /// <summary>
-    /// Интерфейс модели страны
+    /// Country model interface
     /// </summary>
     public interface ICountry
     {

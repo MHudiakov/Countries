@@ -4,12 +4,12 @@ using Countries.Dal.Models.Country;
 namespace Countries.Dal.Repositories.CountryRepository
 {
     /// <summary>
-    /// Интерфейс репозитория стран
+    /// Country repository interface
     /// </summary>
     public interface ICountryRepository
     {
         /// <summary>
-        /// Коллекция стран
+        /// Country collection
         /// </summary>
         IList<ICountry> CountryCollection { get; set; }
     }

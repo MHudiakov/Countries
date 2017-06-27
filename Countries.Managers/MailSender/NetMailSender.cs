@@ -6,15 +6,15 @@ using Countries.Dal.Models.Mail;
 namespace Countries.Managers.MailSender
 {
     /// <summary>
-    /// Менеджер отправки e-mail соообщений
+    /// E-mail sending manager
     /// </summary>
     public class NetMailSender : IMailSenderStrategy
     {
         /// <summary>
-        /// Отправить письмо получателю
+        /// Send e-mail
         /// </summary>
         /// <param name="mailModel">
-        /// Модель письма
+        /// E-mail model
         /// </param>
         public void Send(IMail mailModel)
         {

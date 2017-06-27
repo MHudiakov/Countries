@@ -7,31 +7,31 @@ using Newtonsoft.Json.Linq;
 namespace Countries.Managers.CountriesManager
 {
     /// <summary>
-    /// Менеджер получения списка стран с использованием Web API
+    /// Countri manager (uses WEB API for getting countries info)
     /// </summary>
     public class WebApiCountriesManager : ICountriesManagerStrategy
     {
         /// <summary>
-        /// Адрес сервиса работы со списком стран
+        /// Countries service URL
         /// </summary>
         private const string DataUrl = "https://restcountries.eu/rest/v2/all";
 
         /// <summary>
-        /// Получить коллекцию стран
+        /// Get country collection
         /// </summary>
         /// <returns>
-        /// Коллекция стран
+        /// Country collection
         /// </returns>
         public IEnumerable<ICountry> GetCountries()
         {
-            // Создаем результирующий список стран
+            // Create the resulting list of countries
             IList<ICountry> countryCollection = new List<ICountry>();
 
-            // Получаем JSON стран
+            // Get countries JSON
             string countriesJsonStr = GetCountriesJson();
             JArray countriesJson = JArray.Parse(countriesJsonStr);
 
-            // Формируем модель страны по полученному JSON
+            // Formed country model according to the obtained JSON
             foreach (JObject countryJson in countriesJson.Children<JObject>())
             {
                 ICountry country = new Country();
@@ -55,7 +55,7 @@ namespace Countries.Managers.CountriesManager
         }
 
         /// <summary>
-        /// Получить JSON со списком стран с внешнего сервиса
+        /// Get JSON with a list of countries from external service
         /// </summary>
         /// <returns></returns>
         private string GetCountriesJson()

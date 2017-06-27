@@ -3,7 +3,7 @@
 namespace Countries.Managers.Factories.MailSenderFactory
 {
     /// <summary>
-    /// Абстрактная фабрика по созданию менеджера отправки сообщений
+    /// Abstract factory for creating e-mail sending manager
     /// </summary>
     public abstract class AbstractMailSenderFactory
     {

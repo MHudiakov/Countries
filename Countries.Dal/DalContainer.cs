@@ -4,17 +4,17 @@ using Countries.Dal.DataManager;
 namespace Countries.Dal
 {
     /// <summary>
-    /// Контейнер доступа к данным
+    /// Data access container
     /// </summary>
     public static class DalContainer
     {
         /// <summary>
-        /// Менеджер доступа к данным
+        /// The data access manager
         /// </summary>
         private static IDataManager sDataManager;
 
         /// <summary>
-        /// Получить менеджер доступа к данным
+        /// Get data access manager
         /// </summary>
         public static IDataManager GetDataManager
         {
@@ -30,10 +30,10 @@ namespace Countries.Dal
         }
 
         /// <summary>
-        /// Зарегистрировать менеджер доступа к данным в контейнере
+        /// Register data access manager in container
         /// </summary>
         /// <param name="dataManager">
-        /// Менеджер доступа к данным в контейнере
+        /// Data access manager
         /// </param>
         public static void RegisterDataManger(IDataManager dataManager)
         {

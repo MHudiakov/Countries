@@ -4,15 +4,15 @@ using Countries.Dal.Models.Country;
 namespace Countries.Managers.CountriesManager
 {
     /// <summary>
-    /// Стратегия получения данных по странам
+    /// O btain data for countries strategy
     /// </summary>
     public interface ICountriesManagerStrategy
     {
         /// <summary>
-        /// Получить коллекцию стран
+        /// Get countries
         /// </summary>
         /// <returns>
-        /// Коллекция стран
+        /// Countries collection
         /// </returns>
         IEnumerable<ICountry> GetCountries();
     }
